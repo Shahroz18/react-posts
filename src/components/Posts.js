@@ -6,13 +6,16 @@ import { useState, useEffect } from 'react';
 
 function Posts() {
 
+    // Create state variables
     const [loading, setLoading] = useState(true);
     const [posts, setPosts] = useState(null);
 
+    // Calls function to fetch posts on page load
     useEffect(() => {
 
         getPosts();
 
+        // Fetches posts from API
         async function getPosts() {
             const response = await fetch("https://jsonplaceholder.typicode.com/posts");
             const data = await response.json();
@@ -22,6 +25,7 @@ function Posts() {
         }
     });
 
+    // Show loading text while waiting for fetching
     if (loading) {
         return (
             <div>
